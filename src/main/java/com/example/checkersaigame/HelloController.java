@@ -17,10 +17,14 @@ public class HelloController {
 
     @FXML
    public void pressButton(ActionEvent event){
-       if(txtUserName.getText().equals("user") && txtPassWord.getText().equals("pass")){
-           lblStatus.setText("Login Success");
-       } else {
-           lblStatus.setText("Login Failed");
-       }
+
+        for (int i = 0; i < database.Users.size(); i++) {
+            if(txtUserName.getText().equals(database.Users.get(i)) && txtPassWord.getText().equals(database.Passwords.get(i))){
+                lblStatus.setText("Login Success");
+                break;
+            }
+            lblStatus.setText("Login Failed");
+        }
+
    }
 }
