@@ -8,8 +8,27 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+
     @Override
     public void start(Stage stage){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("StartingMenu.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 400, 400);
+            stage.setTitle("Menu");
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public static void main(String[] args) {
+        database.DataBaseUserName();
+        launch();
+    }
+
+    public static void loginScreen(Stage stage){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 400, 400);
@@ -20,11 +39,5 @@ public class HelloApplication extends Application {
         }catch (Exception e){
             System.out.println(e);
         }
-
-    }
-
-    public static void main(String[] args) {
-        database.DataBaseUserName();
-        launch();
     }
 }
