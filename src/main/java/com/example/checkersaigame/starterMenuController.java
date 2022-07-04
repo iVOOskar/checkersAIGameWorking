@@ -11,7 +11,7 @@ public class starterMenuController {
 
     @FXML
     public void pressButtonLoginMenu(ActionEvent event){
-        HelloApplication.loginScreen();
+        //HelloApplication.loginScreen();
         System.out.println("it works");
     }
 
