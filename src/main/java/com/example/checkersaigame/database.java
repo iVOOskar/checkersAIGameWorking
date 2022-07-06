@@ -8,7 +8,9 @@ public class database {
     public static ArrayList<String> Passwords = new ArrayList<>();
     public static void DataBaseUserName() {
         try {
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://X://My Documents//computer science//NEADatabase//NEADatabase.accdb");
+            String DataLoc = System.getProperty("user.dir") + "\\src//main//resources//databases//NEADatabase.accdb";
+
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://"+ DataLoc, "","");
 
             Statement st = con.createStatement();
 
