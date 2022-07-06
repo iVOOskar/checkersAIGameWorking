@@ -14,8 +14,8 @@ public class database {
 
             Statement st = con.createStatement();
 
-            ResultSet rsUser = st.executeQuery("Select * from Login");
-            ResultSet rsPass = st.executeQuery("Select * from Login");
+            ResultSet rsUser = st.executeQuery("Select UserName from Login");
+            ResultSet rsPass = st.executeQuery("Select Password from Login");
 
             while (true) {
                 if (rsUser.next()) {
