@@ -2,10 +2,17 @@ package com.example.checkersaigame;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class HelloController {
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader fxmlLoader;
     @FXML
     private Label lblStatus;
 
@@ -16,15 +23,26 @@ public class HelloController {
     private TextField txtPassWord;
 
     @FXML
-   public void pressButton(ActionEvent event){
+   public void pressButtonLogin(ActionEvent event){
 
         for (int i = 0; i < database.Users.size(); i++) {
-            if(txtUserName.getText().equals(database.Users.get(i)) && txtPassWord.getText().equals(database.Passwords.get(i))){
+            if(txtUserName.getText().equals(database.Users.get(i)) && txtPassWord.getText().hashCode() == (database.Passwords.get(i))){
                 lblStatus.setText("Login Success");
                 break;
             }
             lblStatus.setText("Login Failed");
         }
-
    }
+    @FXML
+    public void pressButtonBack(ActionEvent event){
+        try {
+            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("StartingMenu.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }

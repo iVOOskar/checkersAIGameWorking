@@ -5,9 +5,12 @@ import java.util.Arrays;
 
 public class database {
     public static ArrayList<String> Users = new ArrayList<>();
-    public static ArrayList<String> Passwords = new ArrayList<>();
+    public static ArrayList<Integer> Passwords = new ArrayList<>();
     public static void DataBaseUserName() {
         try {
+            Users.clear();
+            Passwords.clear();
+
             String DataLoc = System.getProperty("user.dir") + "\\src//main//resources//databases//NEADatabase.accdb";
 
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://"+ DataLoc, "","");
@@ -26,7 +29,7 @@ public class database {
             }
             while (true) {
                 if (rsPass.next()) {
-                    Passwords.add(rsPass.getString("Password"));
+                    Passwords.add(rsPass.getInt("Password"));
                 } else {
                     break;
                 }
