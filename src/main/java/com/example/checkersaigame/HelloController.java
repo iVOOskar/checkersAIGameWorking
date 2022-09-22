@@ -28,6 +28,7 @@ public class HelloController {
         for (int i = 0; i < database.Users.size(); i++) {
             if(txtUserName.getText().equals(database.Users.get(i)) && txtPassWord.getText().hashCode() == (database.Passwords.get(i))){
                 lblStatus.setText("Login Success");
+                GameBoard.createBoard();
                 break;
             }
             lblStatus.setText("Login Failed");
