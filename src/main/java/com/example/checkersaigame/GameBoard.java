@@ -6,7 +6,6 @@ import java.io.File;
 
 public class GameBoard{
     static Thread gameThread;
-    Image backgroundImage = Toolkit.getDefaultToolkit().getImage("Checkers Board-165974.png");
 
 
     public static class Board {
@@ -32,6 +31,10 @@ public class GameBoard{
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
             backBoard.setVisible(true);
+
+            Image backgroundImage = Toolkit.getDefaultToolkit().getImage("Checkers Board-165974.png");
+
+
         }
     }
 
