@@ -1,8 +1,6 @@
 package com.example.checkersaigame;
-import javax.imageio.ImageIO;
+
 import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 
 public class GameBoard{
     static Thread gameThread;
@@ -31,12 +29,12 @@ public class GameBoard{
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
             backBoard.setVisible(true);
-
-            Image backgroundImage = Toolkit.getDefaultToolkit().getImage("Checkers Board-165974.png");
-
-
+            frame.setResizable(false);
         }
     }
+
+
+
 
         public static void createBoard() {
             Board game = new Board();

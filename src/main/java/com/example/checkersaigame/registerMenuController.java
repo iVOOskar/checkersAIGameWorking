@@ -34,23 +34,27 @@ public class registerMenuController {
         try {
             String Username = RegUserName.getText();
             int Password = RegPassWord.getText().hashCode();
+            if(Username.equals(null)){
+                ReglblStatus.setText("Fill the Fields");
+            }else {
 
-            String DataLoc = System.getProperty("user.dir") + "\\src//main//resources//databases//NEADatabase.accdb";
+                String DataLoc = System.getProperty("user.dir") + "\\src//main//resources//databases//NEADatabase.accdb";
 
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://"+ DataLoc, "","");
+                Connection con = DriverManager.getConnection("jdbc:ucanaccess://" + DataLoc, "", "");
 
-            Statement st = con.createStatement();
+                Statement st = con.createStatement();
 
-            int i = st.executeUpdate("INSERT INTO Login(Username,Password) Values('"+Username+"','"+Password+"')");
+                int i = st.executeUpdate("INSERT INTO Login(Username,Password) Values('" + Username + "','" + Password + "')");
 
-            ReglblStatus.setText("Register Success");
+                ReglblStatus.setText("Register Success");
 
-            database.DataBaseUserName();
-            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("StartingMenu.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(fxmlLoader.load());
-            stage.setScene(scene);
-            stage.show();
+                database.DataBaseUserName();
+                fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("StartingMenu.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+                stage.show();
+            }
 
 
 

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,6 +22,8 @@ public class HelloController {
 
     @FXML
     private TextField txtPassWord;
+    @FXML
+    private Button loginButton;
 
     @FXML
    public void pressButtonLogin(ActionEvent event){
@@ -28,6 +31,7 @@ public class HelloController {
         for (int i = 0; i < database.Users.size(); i++) {
             if(txtUserName.getText().equals(database.Users.get(i)) && txtPassWord.getText().hashCode() == (database.Passwords.get(i))){
                 lblStatus.setText("Login Success");
+                ((Node)(event.getSource())).getScene().getWindow().hide();
                 GameBoard.createBoard();
                 break;
             }
