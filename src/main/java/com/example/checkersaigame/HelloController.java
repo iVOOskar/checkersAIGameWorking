@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 public class HelloController {
     private Stage stage;
     private Scene scene;
@@ -32,7 +34,9 @@ public class HelloController {
             if(txtUserName.getText().equals(database.Users.get(i)) && txtPassWord.getText().hashCode() == (database.Passwords.get(i))){
                 lblStatus.setText("Login Success");
                 ((Node)(event.getSource())).getScene().getWindow().hide();
-                GameBoard.createBoard();
+                GameBoard gb = new GameBoard();
+                gb.createBoard();
+                gb.StartThread();
                 break;
             }
             lblStatus.setText("Login Failed");
