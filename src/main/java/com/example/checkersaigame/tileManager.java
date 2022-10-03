@@ -3,7 +3,6 @@ package com.example.checkersaigame;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -11,26 +10,29 @@ public class tileManager {
     GameBoard gp;
     public Tile[] tile;
     public int mapTileNum[][];
+    public tileManager (GameBoard gp){
+        this.gp = gp;
+        tile = new Tile[2];
+        getTileImage();
+        loadMap();
+    }
 
 
     public void getTileImage() {
         try {
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/sprites/black square.png"));
+            tile[0] = new Tile(ImageIO.read(getClass().getResourceAsStream("/com.example.checkersaigame/sprites/black square.png")));
 
-
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/sprites/red square.png"));
-
+            tile[1] = new Tile(ImageIO.read(getClass().getResourceAsStream("/com.example.checkersaigame/sprites/red square.png")));
 
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
     }
 
-    public void loadMap(String filePath){
+    public void loadMap(){
         try {
-            InputStream is = getClass().getResourceAsStream(filePath);
+
+            InputStream is = getClass().getResourceAsStream("/map/boardMap.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;

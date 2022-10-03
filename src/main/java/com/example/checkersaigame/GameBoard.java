@@ -11,6 +11,7 @@ public class GameBoard extends JPanel implements Runnable{
     final int tileSize = originalTileSize * scale; ///48x48
     final int maxScreenCol = 8;
     final int maxScreenRow = 8;
+    public tileManager tm = new tileManager(this);
 
 
     public class Board {
@@ -76,7 +77,6 @@ public class GameBoard extends JPanel implements Runnable{
     public void paintComponent(Graphics g2){
         super.paintComponent(g2);
         Graphics2D g2D = (Graphics2D) g2;
-        tileManager tm = new tileManager();
         tm.draw(g2D);
 
 
