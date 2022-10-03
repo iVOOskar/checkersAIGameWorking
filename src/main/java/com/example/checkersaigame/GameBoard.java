@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameBoard extends JPanel implements Runnable{
-    static Thread gameThread;
+    Thread gameThread;
     final int originalTileSize = 16; //16x16
     final int scale = 3;
 
@@ -46,31 +46,26 @@ public class GameBoard extends JPanel implements Runnable{
     }
     @Override
     public void run() {
-        double drawInterval = 1000000000/60;
+        double drawInterval = 1000/60;
         double delta = 0;
-        long lastTime = System.nanoTime();
+        long lastTime = System.currentTimeMillis();
         long currentTime;
-        long timer =0;
-        int drawCount = 0;
 
         while (gameThread!= null){
 
-            currentTime = System.nanoTime();
-            timer += (currentTime - lastTime);
+            currentTime = System.currentTimeMillis();
             delta += (currentTime - lastTime)/drawInterval;
             lastTime = currentTime;
             if (delta >= 1) {
-
-
+                update();
                 repaint();
                 delta--;
-                drawCount++;
-            }
-            if (timer >= 1000000000){
-                drawCount = 0;
-                timer = 0;
             }
         }
+    }
+
+    public void update(){
+
     }
 
 
@@ -78,8 +73,6 @@ public class GameBoard extends JPanel implements Runnable{
         super.paintComponent(g2);
         Graphics2D g2D = (Graphics2D) g2;
         tm.draw(g2D);
-
-
     }
 }
 
