@@ -1,5 +1,4 @@
 package com.example.checkersaigame;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,12 +11,12 @@ public class GameBoard extends JPanel implements Runnable{
     final int maxScreenCol = 8;
     final int maxScreenRow = 8;
     public tileManager tm = new tileManager(this);
-
+    final int screenWidth = tileSize * maxScreenCol;//384 Pixels
+    final int screenHeight = tileSize *maxScreenRow;//384 Pixels
 
     public class Board {
 
-        final int screenWidth = tileSize * maxScreenCol;//384 Pixels
-        final int screenHeight = tileSize *maxScreenRow;//384 Pixels
+
         private JFrame frame = new JFrame();
         private JPanel backBoard = new JPanel();
 
@@ -34,6 +33,8 @@ public class GameBoard extends JPanel implements Runnable{
         }
     }
 
+
+
     public void createBoard() {
         Board game = new Board();
 
@@ -46,6 +47,7 @@ public class GameBoard extends JPanel implements Runnable{
     }
     @Override
     public void run() {
+        repaint();
         double drawInterval = 1000/60;
         double delta = 0;
         long lastTime = System.currentTimeMillis();
@@ -58,7 +60,6 @@ public class GameBoard extends JPanel implements Runnable{
             lastTime = currentTime;
             if (delta >= 1) {
                 update();
-                repaint();
                 delta--;
             }
         }
@@ -73,6 +74,7 @@ public class GameBoard extends JPanel implements Runnable{
         super.paintComponent(g2);
         Graphics2D g2D = (Graphics2D) g2;
         tm.draw(g2D);
+        g2D.dispose();
     }
 }
 

@@ -36,6 +36,7 @@ public class HelloController {
                 ((Node)(event.getSource())).getScene().getWindow().hide();
                 GameBoard gb = new GameBoard();
                 gb.createBoard();
+
                 gb.StartThread();
                 break;
             }
