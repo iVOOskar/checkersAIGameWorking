@@ -34,7 +34,7 @@ public class registerMenuController {
         try {
             String Username = RegUserName.getText();
             int Password = RegPassWord.getText().hashCode();
-            if(Username.equals(null)){
+            if(Username.equals("")||Password == 0){
                 ReglblStatus.setText("Fill the Fields");
             }else {
 
