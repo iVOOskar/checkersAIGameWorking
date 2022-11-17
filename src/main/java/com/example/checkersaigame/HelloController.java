@@ -31,7 +31,7 @@ public class HelloController {
    public void pressButtonLogin(ActionEvent event){
 
         for (int i = 0; i < database.Users.size(); i++) {
-            if(txtUserName.getText().equals(database.Users.get(i)) && txtPassWord.getText().hashCode() == (database.Passwords.get(i))){
+            if (txtUserName.getText().equals(database.Users.get(i)) && txtPassWord.getText().hashCode() == (database.Passwords.get(i))) {
                 lblStatus.setText("Login Success");
                 ((Node)(event.getSource())).getScene().getWindow().hide();
                 GameBoard gb = new GameBoard();
@@ -42,6 +42,8 @@ public class HelloController {
             }
             lblStatus.setText("Login Failed");
         }
+
+
    }
     @FXML
     public void pressButtonBack(ActionEvent event){
