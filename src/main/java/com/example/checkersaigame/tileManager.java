@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class tileManager {
     GameBoard gp;
@@ -57,6 +58,7 @@ public class tileManager {
                 }
             }
             br.close();
+            //System.out.println(Arrays.deepToString(mapTileNum));
 
         }catch(Exception e) {
             System.out.println(e);

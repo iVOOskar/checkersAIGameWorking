@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Tile extends Rectangle {
     private Player player;
-     public boolean haPlayer() {
+     public boolean hasPlayer() {
          return player != null;
      }
      public Player getPlayer(){

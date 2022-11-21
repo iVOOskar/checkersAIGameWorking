@@ -33,11 +33,15 @@ public class Checkers extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) {
+        try {
             Scene scene = new Scene(createContent());
             primaryStage.setTitle("checkersGame");
             primaryStage.setScene(scene);
             primaryStage.show();
+        }catch( Exception e){
+            System.out.println(e);
+        }
 
 
     }
