@@ -72,7 +72,7 @@ public class tileManager {
         int currentRow = 0;
 
         while(currentCol<8 && currentRow<8){
-
+            System.out.println("drawing");
             int tileNum = mapTileNum[currentCol][currentRow];
             int screenX = currentCol * gp.tileSize;
             int screenY = currentRow * gp.tileSize;
