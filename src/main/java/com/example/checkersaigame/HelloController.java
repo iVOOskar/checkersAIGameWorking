@@ -35,7 +35,11 @@ public class HelloController {
                 lblStatus.setText("Login Success");
                 ((Node)(event.getSource())).getScene().getWindow().hide();
                 GameBoard gb = new GameBoard();
-                gb.createBoard();
+                Screen gameScreen = new Screen();
+                gameScreen.add(gb);
+                gameScreen.pack();
+                gameScreen.setLocationRelativeTo(null);
+                gameScreen.setVisible(true);
 
                 gb.StartThread();
                 break;
