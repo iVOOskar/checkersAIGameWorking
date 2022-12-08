@@ -25,8 +25,11 @@ public class tileManager {
     public void getTileImage() {
         try {
             tile[0] = new Tile(ImageIO.read(new FileInputStream("sprites/blacksquare.png")));
-
             tile[1] = new Tile(ImageIO.read(new FileInputStream("sprites/redsquare.png")));
+            tile[2] = new Tile(ImageIO.read(new FileInputStream("sprites/redpiece.png")));
+            tile[3] = new Tile(ImageIO.read(new FileInputStream("sprites/greypiece.png")));
+            tile[4] = new Tile(ImageIO.read(new FileInputStream("sprites/redking.png")));
+            tile[5] = new Tile(ImageIO.read(new FileInputStream("sprites/greyking.png")));
 
         } catch (Exception e) {
             System.out.println(e);
