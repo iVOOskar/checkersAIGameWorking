@@ -8,13 +8,13 @@ import java.util.concurrent.TimeUnit;
 public abstract class Input implements MouseListener {
     public boolean leftC;
 
-    public void mousePos() throws InterruptedException{
+    public static void mousePos() throws InterruptedException{
         while (true) {
             TimeUnit.SECONDS.sleep(1 / 2);
             double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
             double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
-            System.out.println("X:" + mouseX);
-            System.out.println("Y:" + mouseY);
+            //System.out.println("X:" + mouseX);
+            //System.out.println("Y:" + mouseY);
 
         }
     }
@@ -22,6 +22,7 @@ public abstract class Input implements MouseListener {
     public void mousePressed(MouseEvent e){
         if (e.getButton()== MouseEvent.BUTTON1){
             leftC = true;
+            System.out.println("pressed");
         }
     }
     @Override

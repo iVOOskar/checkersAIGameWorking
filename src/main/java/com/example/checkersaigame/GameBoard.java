@@ -42,6 +42,8 @@ public class GameBoard extends JPanel implements Runnable {
         long timer =0;
 
 
+
+
         while (gameThread!= null){
 
             currentTime = System.nanoTime();
@@ -51,13 +53,18 @@ public class GameBoard extends JPanel implements Runnable {
             if (delta >= 1) {
 
                 repaint();
+                playerChoices.update();
                 delta--;
 
             }
             if (timer >= 1000000000){
                 //System.out.println("FPS:"+ drawCount);
                 timer = 0;
-
+                try {
+                    Input.mousePos();
+                } catch (InterruptedException e) {
+                    System.out.println(e);
+                }
             }
         }
     }
