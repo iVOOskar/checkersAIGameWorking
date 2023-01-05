@@ -13,8 +13,8 @@ public abstract class Input implements MouseListener {
             TimeUnit.SECONDS.sleep(1 / 2);
             double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
             double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
-            //System.out.println("X:" + mouseX);
-            //System.out.println("Y:" + mouseY);
+            System.out.println("X:" + mouseX);
+            System.out.println("Y:" + mouseY);
 
         }
     }

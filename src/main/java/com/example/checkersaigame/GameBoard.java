@@ -53,18 +53,17 @@ public class GameBoard extends JPanel implements Runnable {
             if (delta >= 1) {
 
                 repaint();
-                playerChoices.update();
+                try {
+                    playerChoices.update();
+                } catch (InterruptedException e) {
+                    System.out.println(e);
+                }
                 delta--;
 
             }
             if (timer >= 1000000000){
                 //System.out.println("FPS:"+ drawCount);
                 timer = 0;
-                try {
-                    Input.mousePos();
-                } catch (InterruptedException e) {
-                    System.out.println(e);
-                }
             }
         }
     }
