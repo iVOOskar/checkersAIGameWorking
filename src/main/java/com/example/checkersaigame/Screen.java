@@ -7,5 +7,6 @@ public class Screen  extends JFrame {
         this.setTitle("GameBoard");
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setUndecorated(true);
     }
 }
