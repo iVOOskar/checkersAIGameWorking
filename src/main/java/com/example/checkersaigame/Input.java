@@ -9,14 +9,44 @@ public abstract class Input implements MouseListener {
     public boolean leftC;
 
     public static void mousePos() throws InterruptedException{
+
+
         while (true) {
             TimeUnit.SECONDS.sleep(1 / 2);
             double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
             double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
             System.out.println("X:" + mouseX);
             System.out.println("Y:" + mouseY);
-
+            GameBoard gb = new GameBoard();
+            if (mouseX > 700 && mouseX < 700 + gb.tileSize && mouseY > 264 && mouseY < 264 + gb.tileSize) {
+                System.out.println("1");
+            } else if (mouseX > 700 + 2 * gb.tileSize && mouseX < 700 + 3 * gb.tileSize && mouseY > 264 && mouseY < 264 + gb.tileSize) {
+                System.out.println("2");
+            } else if (mouseX > 700 + 4 * gb.tileSize && mouseX < 700 + 5 * gb.tileSize && mouseY > 264 && mouseY < 264 + gb.tileSize) {
+                System.out.println("3");
+            } else if (mouseX > 700 + 6 * gb.tileSize && mouseX < 700 + 7 * gb.tileSize && mouseY > 264 && mouseY < 264 + gb.tileSize) {
+                System.out.println("4");
+            } else if (mouseX > 700 + gb.tileSize && mouseX < 700 + 2 * gb.tileSize && mouseY > 264 + gb.tileSize && mouseY < 264 + 2 * gb.tileSize) {
+                System.out.println("5");
+            } else if (mouseX > 700 + 3 * gb.tileSize && mouseX < 700 + 4 * gb.tileSize && mouseY > 264 + gb.tileSize && mouseY < 264 + 2 * gb.tileSize) {
+                System.out.println("6");
+            } else if (mouseX > 700 + 5 * gb.tileSize && mouseX < 700 + 6 * gb.tileSize && mouseY > 264 + gb.tileSize && mouseY < 264 + 2 * gb.tileSize) {
+                System.out.println("7");
+            } else if (mouseX > 700 + 7 * gb.tileSize && mouseX < 700 + 8 * gb.tileSize && mouseY > 264 + gb.tileSize && mouseY < 264 + 2 * gb.tileSize) {
+                System.out.println("8");
+            } else if (mouseX > 700 && mouseX < 700 + gb.tileSize && mouseY > 264 + 2 * gb.tileSize && mouseY < 264 + 3 * gb.tileSize) {
+                System.out.println("9");
+            } else if (mouseX > 700 + 2 * gb.tileSize && mouseX < 700 + 3 * gb.tileSize && mouseY > 264 + 2 * gb.tileSize && mouseY < 264 + 3 * gb.tileSize) {
+                System.out.println("10");
+            } else if (mouseX > 700+ 4 * gb.tileSize && mouseX  < 700 + 5 * gb.tileSize && mouseY > 264 + 2 * gb.tileSize && mouseY < 264 + 3 * gb.tileSize) {
+                System.out.println("11");
+            } else if (mouseX > 700 + 6 * gb.tileSize&& mouseX  < 700 + 7 * gb.tileSize && mouseY > 264 + 2 * gb.tileSize && mouseY < 264 + 3 * gb.tileSize) {
+                System.out.println("12");
+            }
         }
+
+
+
     }
     @Override
     public void mousePressed(MouseEvent e){
