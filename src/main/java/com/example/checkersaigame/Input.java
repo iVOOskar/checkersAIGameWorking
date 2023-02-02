@@ -40,8 +40,22 @@ public abstract class Input implements MouseListener {
                 System.out.println("10");
             } else if (mouseX > 700+ 4 * gb.tileSize && mouseX  < 700 + 5 * gb.tileSize && mouseY > 264 + 2 * gb.tileSize && mouseY < 264 + 3 * gb.tileSize) {
                 System.out.println("11");
-            } else if (mouseX > 700 + 6 * gb.tileSize&& mouseX  < 700 + 7 * gb.tileSize && mouseY > 264 + 2 * gb.tileSize && mouseY < 264 + 3 * gb.tileSize) {
+            } else if (mouseX > 700 + gb.tileSize&& mouseX  < 700 + 2* gb.tileSize && mouseY > 264 + 3 * gb.tileSize && mouseY < 264 + 4 * gb.tileSize) {
                 System.out.println("12");
+            } else if (mouseX > 700 +3 * gb.tileSize&& mouseX  < 700 + 4* gb.tileSize && mouseY > 264 + 3 * gb.tileSize && mouseY < 264 + 4 * gb.tileSize) {
+            System.out.println("13");
+            } else if (mouseX > 700 + 5*gb.tileSize&& mouseX  < 700 + 6* gb.tileSize && mouseY > 264 + 3 * gb.tileSize && mouseY < 264 + 4 * gb.tileSize) {
+                System.out.println("14");
+            } else if (mouseX > 700 + 7*gb.tileSize&& mouseX  < 700 + 8* gb.tileSize && mouseY > 264 + 3 * gb.tileSize && mouseY < 264 + 4 * gb.tileSize) {
+                System.out.println("15");
+            } else if (mouseX > 700 + 0*gb.tileSize&& mouseX  < 700 + 1* gb.tileSize && mouseY > 264 + 4 * gb.tileSize && mouseY < 264 + 5 * gb.tileSize) {
+                System.out.println("16");
+            } else if (mouseX > 700 + 2*gb.tileSize&& mouseX  < 700 + 3* gb.tileSize && mouseY > 264 + 4 * gb.tileSize && mouseY < 264 + 5 * gb.tileSize) {
+                System.out.println("17");
+            }else if (mouseX > 700 + 4*gb.tileSize&& mouseX  < 700 + 5* gb.tileSize && mouseY > 264 + 4 * gb.tileSize && mouseY < 264 + 5 * gb.tileSize) {
+                System.out.println("18");
+            }else if (mouseX > 700 + 6*gb.tileSize&& mouseX  < 700 + 7* gb.tileSize && mouseY > 264 + 4 * gb.tileSize && mouseY < 264 + 5 * gb.tileSize) {
+                System.out.println("19");
             }
         }
 
