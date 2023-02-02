@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class tileManager {
     GameBoard gp;
     public Tile[] tile;
-    public int[][] mapTileNum;
+    public static int[][] mapTileNum;
 
     public tileManager(GameBoard gp) {
         this.gp = gp;

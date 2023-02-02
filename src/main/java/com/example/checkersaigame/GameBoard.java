@@ -25,6 +25,8 @@ public class GameBoard extends JPanel implements Runnable {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setDoubleBuffered(true);
         this.setFocusable(true);
+        mouseHandling mm1 = new mouseHandling();
+        this.addMouseListener(mm1);
 
     }
     tileManager TileManager = new tileManager(this);
