@@ -5,21 +5,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.concurrent.TimeUnit;
 
+import static com.example.checkersaigame.mouseHandling.mouseX;
+import static com.example.checkersaigame.mouseHandling.mouseY;
+
 public abstract class Input{
     public static int posX;
     public static int posY;
+    public static boolean Mouse = true;
 
 
 
     public static void mousePos() throws InterruptedException{
-        ;
 
-        while (true) {
-            TimeUnit.SECONDS.sleep(1 / 2);
-            double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
-            double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
-            //System.out.println("X:" + mouseX);
-            //System.out.println("Y:" + mouseY);
+
             GameBoard gb = new GameBoard();
             if (mouseX > 700 && mouseX < 700 + gb.tileSize && mouseY > 264 && mouseY < 264 + gb.tileSize) {
                 posX = 1;
@@ -123,4 +121,3 @@ public abstract class Input{
             }
         }
     }
-}

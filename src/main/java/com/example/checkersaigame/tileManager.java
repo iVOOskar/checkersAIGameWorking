@@ -11,14 +11,11 @@ import java.util.Arrays;
 public class tileManager {
     GameBoard gp;
     public Tile[] tile;
-    public static int[][] mapTileNum;
 
     public tileManager(GameBoard gp) {
         this.gp = gp;
         tile = new Tile[10];
-        mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        loadMap("map/boardMap.txt");
     }
 
 
@@ -36,38 +33,7 @@ public class tileManager {
         }
     }
 
-    public void loadMap(String filePath){
-        try {
 
-            InputStream is = new FileInputStream(filePath);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-            int col = 0;
-            int row = 0;
-
-            while(col < 8 && row < 8) {
-                String line = br.readLine();
-
-                while (col < 8) {
-                    String numbers[] = line.split(" ");
-                    int num = Integer.parseInt(numbers[col]);
-                    mapTileNum[col][row] = num;
-                    col++;
-
-                }
-                if (col == 8) {
-                    col = 0;
-                    row++;
-                }
-            }
-
-            br.close();
-            //System.out.println(Arrays.deepToString(mapTileNum));
-
-        }catch(Exception e) {
-            System.out.println(e);
-        }
-    }
 
 
 
@@ -76,7 +42,7 @@ public class tileManager {
         int currentRow = 0;
         //System.out.println("drawing");
         while(currentRow<8){
-            int tileNum = mapTileNum[currentCol][currentRow];
+            int tileNum = mouseHandling.maptoarrays[currentCol][currentRow];
             int screenX = currentCol * gp.tileSize;
             int screenY = currentRow * gp.tileSize;
             g2D.drawImage(tile[tileNum].image,screenX,screenY,gp.tileSize,gp.tileSize,null);

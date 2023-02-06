@@ -24,6 +24,8 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         database.DataBaseUserName();
+        mouseHandling mH = new mouseHandling();
+        mH.mapToArray();
         launch();
     }
 }

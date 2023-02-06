@@ -37,7 +37,8 @@ public class GameBoard extends JPanel implements Runnable {
     }
     @Override
     public void run() {
-        double drawInterval = 1000000000/60;
+        double drawInterval = 1000/60;
+        System.out.println("1");
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -55,12 +56,8 @@ public class GameBoard extends JPanel implements Runnable {
             if (delta >= 1) {
 
                 repaint();
-                try {
-                    playerChoices.update();
-                } catch (InterruptedException e) {
-                    System.out.println(e);
-                }
                 delta--;
+
 
             }
             if (timer >= 1000000000){
@@ -74,7 +71,7 @@ public class GameBoard extends JPanel implements Runnable {
         super.paintComponent(g2);
         Graphics2D g2D = (Graphics2D) g2;
         TileManager.draw(g2D);
-        g2D.dispose();
+        //g2D.dispose();
 
     }
 }
