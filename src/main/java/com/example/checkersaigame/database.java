@@ -8,9 +8,10 @@ public class database {
     public static ArrayList<Integer> Passwords = new ArrayList<>();
     public static void DataBaseUserName() {
         try {
+            //clearing arrays for reading from array
             Users.clear();
             Passwords.clear();
-
+            //getting connection to database
             String DataLoc = System.getProperty("user.dir") + "\\src//main//resources//databases//NEADatabase.accdb";
 
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://"+ DataLoc, "","");
