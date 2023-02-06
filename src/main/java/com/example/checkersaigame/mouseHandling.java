@@ -14,6 +14,8 @@ public class mouseHandling implements MouseListener {
     boolean valid = false;
     public static double mouseX;
     public static double mouseY;
+    public static int turnAdding = 1;
+    public static int turn;
 
     @Override
     public void mouseClicked(MouseEvent arg0) {
@@ -29,6 +31,11 @@ public class mouseHandling implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent arg0) {
+        if(turnAdding%2==1){
+            turn = 2;
+        }else{
+            turn = 3;
+        }
         mouseX = MouseInfo.getPointerInfo().getLocation().getX();
        mouseY = MouseInfo.getPointerInfo().getLocation().getY();
        try {
@@ -44,7 +51,7 @@ public class mouseHandling implements MouseListener {
             System.out.println(Input.posX);
             System.out.println(Input.posY);
             System.out.println(Arrays.deepToString(maptoarrays));
-            if (maptoarrays[Input.posX-1][Input.posY-1] == 2) {
+            if (maptoarrays[Input.posX-1][Input.posY-1] == turn) {
                 pieceX = Input.posX-1;
                 pieceY = Input.posY-1;
 
@@ -63,9 +70,9 @@ public class mouseHandling implements MouseListener {
         }
         if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999) {
             maptoarrays[pieceX][pieceY] = 0;
-            maptoarrays[Input.posX-1][Input.posY-1] = 2;
+            maptoarrays[Input.posX-1][Input.posY-1] = turn;
             System.out.println("");
-            Input.Mouse = false;
+            turnAdding++;
         } else if(Input.posX == 999999999) {
             System.out.println("select a valid place");
         }

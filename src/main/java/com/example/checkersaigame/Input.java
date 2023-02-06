@@ -11,7 +11,6 @@ import static com.example.checkersaigame.mouseHandling.mouseY;
 public abstract class Input{
     public static int posX;
     public static int posY;
-    public static boolean Mouse = true;
 
 
 
