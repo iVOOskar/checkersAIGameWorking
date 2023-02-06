@@ -47,14 +47,16 @@ public class mouseHandling implements MouseListener {
             System.out.println("click on a valid space");
         } else {
             valid = true;
-            System.out.println(maptoarrays[Input.posX-1][Input.posY-1]);
-            System.out.println(Input.posX);
-            System.out.println(Input.posY);
-            System.out.println(Arrays.deepToString(maptoarrays));
-            if (maptoarrays[Input.posX-1][Input.posY-1] == turn) {
-                pieceX = Input.posX-1;
-                pieceY = Input.posY-1;
-
+            //System.out.println(maptoarrays[Input.posX-1][Input.posY-1]);
+            //System.out.println(Input.posX);
+            //System.out.println(Input.posY);
+            //System.out.println(Arrays.deepToString(maptoarrays));
+            if (maptoarrays[Input.posX-1][Input.posY-1]!= turn){
+                System.out.println("not your turn");
+                valid = false;
+            } else if ( (maptoarrays[Input.posX-1][Input.posY-1] == turn) ) {
+                    pieceX = Input.posX-1;
+                    pieceY = Input.posY-1;
             }
         }
     }
