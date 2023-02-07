@@ -105,6 +105,14 @@ public class mouseHandling implements MouseListener {
             maptoarrays[newX-1][newY+1] = 0;
             whiteTakes++;
             turn++;
+        } else if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999
+                &&(pieceX==newX+2&& pieceY == newY+2&&maptoarrays[newX-1][newY-1]==takes&&turn ==2)
+        ) {
+            maptoarrays[pieceX][pieceY] = 0;
+            maptoarrays[newX][newY]= turn;
+            maptoarrays[newX+1][newY+1] = 0;
+            whiteTakes++;
+            turn++;
         }
         else if(Input.posX == 999999999) {
             System.out.println("select a valid place");
