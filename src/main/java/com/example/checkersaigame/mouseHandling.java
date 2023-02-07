@@ -102,7 +102,7 @@ public class mouseHandling implements MouseListener {
         )){
             maptoarrays[pieceX][pieceY] = 0;
             maptoarrays[newX][newY]= turn;
-            maptoarrays[newX+1][newY-1] = 0;
+            maptoarrays[newX-1][newY+1] = 0;
             whiteTakes++;
             turn++;
         }
