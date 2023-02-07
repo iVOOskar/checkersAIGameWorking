@@ -16,6 +16,11 @@ public class mouseHandling implements MouseListener {
     public static double mouseY;
     public static int turnAdding = 1;
     public static int turn;
+    public static int takes;
+    public static int whiteTakes = 0;
+    public static int greyTakes = 0;
+    public static int newX;
+    public static int newY;
 
     @Override
     public void mouseClicked(MouseEvent arg0) {
@@ -31,30 +36,40 @@ public class mouseHandling implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent arg0) {
+        //who turn it is white or grey
         if(turnAdding%2==1){
             turn = 2;
+            takes = 3;
         }else{
             turn = 3;
+            takes = 2;
         }
         mouseX = MouseInfo.getPointerInfo().getLocation().getX();
        mouseY = MouseInfo.getPointerInfo().getLocation().getY();
+
        try {
            Input.mousePos();
        }catch (Exception e){
            System.out.println(e);
        }
+
         if (Input.posX == 999999999) {
             System.out.println("click on a valid space");
         } else {
             valid = true;
+            //testing
             //System.out.println(maptoarrays[Input.posX-1][Input.posY-1]);
             //System.out.println(Input.posX);
             //System.out.println(Input.posY);
             //System.out.println(Arrays.deepToString(maptoarrays));
-            if (maptoarrays[Input.posX-1][Input.posY-1]!= turn){
+
+            //checking its clicking on the correct space
+            if (maptoarrays[Input.posX-1][Input.posY-1]==takes){
                 System.out.println("not your turn");
                 valid = false;
-            } else if ( (maptoarrays[Input.posX-1][Input.posY-1] == turn) ) {
+            }
+            //saving selected mouse position to variable
+            else if ( (maptoarrays[Input.posX-1][Input.posY-1] == turn) ) {
                     pieceX = Input.posX-1;
                     pieceY = Input.posY-1;
             }
@@ -63,6 +78,7 @@ public class mouseHandling implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent arg0) {
+        //getting new position
         mouseX = MouseInfo.getPointerInfo().getLocation().getX();
         mouseY = MouseInfo.getPointerInfo().getLocation().getY();
         try {
@@ -70,12 +86,27 @@ public class mouseHandling implements MouseListener {
         }catch (Exception e){
             System.out.println(e);
         }
-        if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999) {
+        newX = Input.posX-1;
+        newY =  Input.posY-1;
+        //valid place location
+        if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999 &&
+                //valid move diagonal
+                ((pieceX==Input.posX-2&&pieceY==Input.posY&&turn==2)||(pieceX==Input.posX&&pieceY==Input.posY&&turn==2)||(pieceX==Input.posX  &&pieceY==Input.posY-2&&turn==3)||(pieceX==Input.posX-2  &&pieceY==Input.posY-2&&turn==3))) {
             maptoarrays[pieceX][pieceY] = 0;
             maptoarrays[Input.posX-1][Input.posY-1] = turn;
             System.out.println("");
             turnAdding++;
-        } else if(Input.posX == 999999999) {
+        } else if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999
+                &&((pieceX==newX-2&& pieceY == newY+2&&maptoarrays[newX+1][newY-1]==takes&&turn ==2)
+                //||(pieceX==newX+2&& pieceY == newY+2&&maptoarrays[newX-1][newY-1]==takes&&turn ==2)
+        )){
+            maptoarrays[pieceX][pieceY] = 0;
+            maptoarrays[newX][newY]= turn;
+            maptoarrays[newX+1][newY-1] = 0;
+            whiteTakes++;
+            turn++;
+        }
+        else if(Input.posX == 999999999) {
             System.out.println("select a valid place");
         }
         else{
