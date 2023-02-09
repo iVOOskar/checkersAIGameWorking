@@ -38,7 +38,6 @@ public class GameBoard extends JPanel implements Runnable {
     @Override
     public void run() {
         double drawInterval = 1000/60;
-        System.out.println("1");
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;

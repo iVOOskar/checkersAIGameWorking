@@ -21,6 +21,8 @@ public class mouseHandling implements MouseListener {
     public static int greyTakes = 0;
     public static int newX;
     public static int newY;
+    public static int king;
+    public static int takesKing;
 
     @Override
     public void mouseClicked(MouseEvent arg0) {
@@ -40,9 +42,13 @@ public class mouseHandling implements MouseListener {
         if(turnAdding%2==1){
             turn = 2;
             takes = 3;
+            king = 4;
+            takesKing=5;
         }else{
             turn = 3;
             takes = 2;
+            king = 5;
+            takesKing =4;
         }
         mouseX = MouseInfo.getPointerInfo().getLocation().getX();
        mouseY = MouseInfo.getPointerInfo().getLocation().getY();
@@ -58,9 +64,9 @@ public class mouseHandling implements MouseListener {
         } else {
             valid = true;
             //testing
-            //System.out.println(maptoarrays[Input.posX-1][Input.posY-1]);
-            //System.out.println(Input.posX);
-            //System.out.println(Input.posY);
+            System.out.println(maptoarrays[Input.posX-1][Input.posY-1]);
+            System.out.println(Input.posX);
+            System.out.println(Input.posY);
             //System.out.println(Arrays.deepToString(maptoarrays));
 
             //checking its clicking on the correct space
@@ -69,7 +75,7 @@ public class mouseHandling implements MouseListener {
                 valid = false;
             }
             //saving selected mouse position to variable
-            else if ( (maptoarrays[Input.posX-1][Input.posY-1] == turn) ) {
+            else if ( (maptoarrays[Input.posX-1][Input.posY-1] == turn||maptoarrays[Input.posX-1][Input.posY-1]==king) ) {
                     pieceX = Input.posX-1;
                     pieceY = Input.posY-1;
             }
@@ -81,38 +87,111 @@ public class mouseHandling implements MouseListener {
         //getting new position
         mouseX = MouseInfo.getPointerInfo().getLocation().getX();
         mouseY = MouseInfo.getPointerInfo().getLocation().getY();
+
+
         try {
             Input.mousePos();
         }catch (Exception e){
             System.out.println(e);
         }
+        //testing
+        System.out.println(maptoarrays[Input.posX-1][Input.posY-1]);
+        System.out.println(Input.posX);
+        System.out.println(Input.posY);
         newX = Input.posX-1;
         newY =  Input.posY-1;
         //valid place location
         if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999 &&
                 //valid move diagonal
-                ((pieceX==Input.posX-2&&pieceY==Input.posY&&turn==2)||(pieceX==Input.posX&&pieceY==Input.posY&&turn==2)||(pieceX==Input.posX  &&pieceY==Input.posY-2&&turn==3)||(pieceX==Input.posX-2  &&pieceY==Input.posY-2&&turn==3))) {
-            maptoarrays[pieceX][pieceY] = 0;
-            maptoarrays[Input.posX-1][Input.posY-1] = turn;
+                ((pieceX==newX-1&&pieceY==Input.posY&&(turn==2||maptoarrays[pieceX][pieceY] == king))||(pieceX==newX+1&&pieceY==Input.posY&&(turn==2||maptoarrays[pieceX][pieceY] == king))||(pieceX==newX+1  &&pieceY==Input.posY-2&&(turn==3||maptoarrays[pieceX][pieceY] == king))||(pieceX==newX-1  &&pieceY==Input.posY-2&&(turn==3||maptoarrays[pieceX][pieceY] == king)))) {
+            //king move back and forward
+            if( maptoarrays[pieceX][pieceY] == king ){
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[Input.posX-1][Input.posY-1] = king;
+            }else {
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[Input.posX - 1][Input.posY - 1] = turn;
+            }
+            //see if king is made
+            if(Input.posY-1==0&&turn==2){
+                maptoarrays[Input.posX-1][Input.posY-1]=king;
+            }else if (Input.posY-1==7&&turn==3){
+                maptoarrays[Input.posX-1][Input.posY-1]=king;
+            }
             System.out.println("");
             turnAdding++;
+            //white+king taking diagonal left
         } else if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999
-                &&((pieceX==newX-2&& pieceY == newY+2&&maptoarrays[newX+1][newY-1]==takes&&turn ==2)
-                //||(pieceX==newX+2&& pieceY == newY+2&&maptoarrays[newX-1][newY-1]==takes&&turn ==2)
+                &&((pieceX==newX-2&& pieceY == newY+2&&(maptoarrays[newX-1][newY+1]==takes||maptoarrays[newX-1][newY+1]==takesKing)&&(turn ==2||maptoarrays[pieceX][pieceY] == king))
         )){
-            maptoarrays[pieceX][pieceY] = 0;
-            maptoarrays[newX][newY]= turn;
-            maptoarrays[newX-1][newY+1] = 0;
+            //changing board
+            //check if king
+            if( maptoarrays[pieceX][pieceY] == king ) {
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[newX][newY] = king;
+                maptoarrays[newX - 1][newY + 1] = 0;
+            }else{
+                //if not king
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[newX][newY] = turn;
+                maptoarrays[newX - 1][newY + 1] = 0;
+            }
+            //how many piece left
             whiteTakes++;
-            turn++;
+            turnAdding++;
+            //white+king taking diagonal right
         } else if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999
-                &&(pieceX==newX+2&& pieceY == newY+2&&maptoarrays[newX-1][newY-1]==takes&&turn ==2)
+                &&(pieceX==newX+2&& pieceY == newY+2&&(maptoarrays[newX-1][newY-1]==takes||maptoarrays[newX-1][newY-1]==takesKing)&&(turn ==2||maptoarrays[pieceX][pieceY] == king))
         ) {
-            maptoarrays[pieceX][pieceY] = 0;
-            maptoarrays[newX][newY]= turn;
-            maptoarrays[newX+1][newY+1] = 0;
+            //changing on board
+            //check if king
+            if( maptoarrays[pieceX][pieceY] == king ) {
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[newX][newY] = king;
+                maptoarrays[newX + 1][newY + 1] = 0;
+            }else{
+                //if not king
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[newX][newY] = turn;
+                maptoarrays[newX + 1][newY + 1] = 0;
+            }
+            //how many pieces left
             whiteTakes++;
-            turn++;
+            turnAdding++;
+            //grey+king taking left
+        }else if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999
+                &&(pieceX==newX-2&&pieceY==newY-2&&(maptoarrays[newX-1][newY-1]==takes||(turn==3||maptoarrays[newX-1][newY-1]==takesKing)&&maptoarrays[pieceX][pieceY] == king))){
+            if( maptoarrays[pieceX][pieceY] == king ) {
+                //check if king
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[newX][newY] = king;
+                maptoarrays[newX - 1][newY - 1] = 0;
+            }else{
+                //if not king
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[newX][newY] = turn;
+                maptoarrays[newX - 1][newY - 1] = 0;
+            }
+            greyTakes++;
+            turnAdding++;
+            //grey+king taking right
+        }else if (valid == true && maptoarrays[Input.posX-1][Input.posY-1] == 0 && Input.posX != 999999999
+                &&(pieceX==newX+2&&pieceY==newY-2&&(maptoarrays[newX+1][newY-1]==takes||maptoarrays[newX+1][newY-1]==takesKing)&&(turn==3||maptoarrays[pieceX][pieceY] == king))){
+            //check if king and keep the king
+            if( maptoarrays[pieceX][pieceY] == king ) {
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[newX][newY] = king;
+                maptoarrays[newX + 1][newY - 1] = 0;
+            }else{
+                //if not king
+                maptoarrays[pieceX][pieceY] = 0;
+                maptoarrays[newX][newY] = turn;
+                maptoarrays[newX + 1][newY - 1] = 0;
+            }
+
+            greyTakes++;
+            turnAdding++;
+
         }
         else if(Input.posX == 999999999) {
             System.out.println("select a valid place");

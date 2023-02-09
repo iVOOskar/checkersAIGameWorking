@@ -19,8 +19,8 @@ public abstract class Input{
         //laptop mouse co-ods, y = 158
         //pc mouse co-ods, x = 700
         //pc mouse co-ods, y = 264
-        int xBuffer = 512;
-        int yBuffer = 158;
+        int xBuffer = 700;
+        int yBuffer = 264;
 
         //finding mouse position on board
             GameBoard gb = new GameBoard();
