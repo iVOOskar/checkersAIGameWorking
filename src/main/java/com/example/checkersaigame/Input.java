@@ -86,7 +86,7 @@ public abstract class Input{
                 posY = 5;
             }else if (mouseX > xBuffer + 1*gb.tileSize&& mouseX  < xBuffer + 2* gb.tileSize && mouseY > yBuffer+ 5 * gb.tileSize && mouseY < yBuffer + 6 * gb.tileSize) {
                 posX = 2;
-                posY = 8;
+                posY = 6;
             }else if (mouseX > xBuffer + 3*gb.tileSize&& mouseX  < xBuffer + 4* gb.tileSize && mouseY > yBuffer + 5 * gb.tileSize && mouseY < yBuffer + 6 * gb.tileSize) {
                 posX = 4;
                 posY = 6;

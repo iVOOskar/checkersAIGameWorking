@@ -22,6 +22,7 @@ public class GameBoard extends JPanel implements Runnable {
 
 
     public GameBoard(){
+        //loading the board screen
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setDoubleBuffered(true);
         this.setFocusable(true);
@@ -62,6 +63,20 @@ public class GameBoard extends JPanel implements Runnable {
             if (timer >= 1000000000){
                 //System.out.println("FPS:"+ drawCount);
                 timer = 0;
+            }
+            if(mouseHandling.greyTakes==12){
+                System.out.println("Grey wins");
+                //reset board
+                mouseHandling mH = new mouseHandling();
+                mH.mapToArray();
+                mouseHandling.greyTakes =0;
+            }else if(mouseHandling.whiteTakes==12){
+                System.out.println("white wins");
+                //reset board
+                mouseHandling mH = new mouseHandling();
+                mH.mapToArray();
+                mouseHandling.whiteTakes=0;
+
             }
         }
     }
