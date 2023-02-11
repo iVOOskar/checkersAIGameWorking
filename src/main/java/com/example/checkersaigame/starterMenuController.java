@@ -4,11 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.security.PrivateKey;
+
 
 
 public class starterMenuController {
@@ -20,6 +19,7 @@ public class starterMenuController {
     @FXML
     public void pressButtonLoginMenu(ActionEvent event){
         try {
+            //go to login menu
             fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(fxmlLoader.load());
@@ -34,6 +34,7 @@ public class starterMenuController {
     @FXML
     public void pressButtonRegisterMenu(ActionEvent event){
         try {
+            //go to register menu
             fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("registerMenu.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(fxmlLoader.load());

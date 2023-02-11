@@ -21,6 +21,7 @@ public class tileManager {
 
     public void getTileImage() {
         try {
+            //loading tiles
             tile[0] = new Tile(ImageIO.read(new FileInputStream("sprites/blacksquare.png")));
             tile[1] = new Tile(ImageIO.read(new FileInputStream("sprites/redsquare.png")));
             tile[2] = new Tile(ImageIO.read(new FileInputStream("sprites/redpiece.png")));
