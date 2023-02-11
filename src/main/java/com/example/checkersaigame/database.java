@@ -1,7 +1,7 @@
 package com.example.checkersaigame;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 public class database {
     public static ArrayList<String> Users = new ArrayList<>();
@@ -17,11 +17,13 @@ public class database {
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://"+ DataLoc, "","");
 
             Statement st = con.createStatement();
-
+            //SQL for usernames
             ResultSet rsUser = st.executeQuery("Select UserName from Login");
+            //SQL for passwords
             ResultSet rsPass = st.executeQuery("Select Password from Login");
 
             while (true) {
+                //writing to the array from database usernames
                 if (rsUser.next()) {
                     Users.add(rsUser.getString("UserName"));
                 } else {
@@ -29,14 +31,16 @@ public class database {
                 }
             }
             while (true) {
+                //writing to the array from database passwords
                 if (rsPass.next()) {
                     Passwords.add(rsPass.getInt("Password"));
                 } else {
                     break;
                 }
             }
-            System.out.println(Users);
-            System.out.println(Passwords);
+            //testing
+            //System.out.println(Users);
+            //System.out.println(Passwords);
 
                 con.close();
 

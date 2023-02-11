@@ -38,6 +38,7 @@ public class GameBoard extends JPanel implements Runnable {
     }
     @Override
     public void run() {
+        //games loop
         double drawInterval = 1000/60;
         double delta = 0;
         long lastTime = System.nanoTime();
@@ -64,12 +65,14 @@ public class GameBoard extends JPanel implements Runnable {
                 //System.out.println("FPS:"+ drawCount);
                 timer = 0;
             }
+            //check if winners
             if(mouseHandling.greyTakes==12){
                 System.out.println("Grey wins");
                 //reset board
                 mouseHandling mH = new mouseHandling();
                 mH.mapToArray();
                 mouseHandling.greyTakes =0;
+                //check is winners
             }else if(mouseHandling.whiteTakes==12){
                 System.out.println("white wins");
                 //reset board

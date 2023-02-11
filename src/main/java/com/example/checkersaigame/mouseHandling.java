@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class mouseHandling implements MouseListener {
@@ -101,7 +100,7 @@ public class mouseHandling implements MouseListener {
         newX = Input.posX - 1;
         newY = Input.posY - 1;
         //valid place location
-        if (valid == true && maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999 &&
+        if (valid && maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999 &&
                 //valid move diagonal
                 ((pieceX == newX - 1 && pieceY == Input.posY && (turn == 2 || maptoarrays[pieceX][pieceY] == king)) || (pieceX == newX + 1 && pieceY == Input.posY && (turn == 2 || maptoarrays[pieceX][pieceY] == king)) || (pieceX == newX + 1 && pieceY == Input.posY - 2 && (turn == 3 || maptoarrays[pieceX][pieceY] == king)) || (pieceX == newX - 1 && pieceY == Input.posY - 2 && (turn == 3 || maptoarrays[pieceX][pieceY] == king)))) {
             //king move back and forward
@@ -122,7 +121,7 @@ public class mouseHandling implements MouseListener {
             //white+king taking diagonal left
         }
 
-        else if (valid == true && maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999
+        else if (valid && maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999
                 && ((pieceX == newX - 2 && pieceY == newY + 2 && (maptoarrays[newX - 1][newY + 1] == takes || maptoarrays[newX - 1][newY + 1] == takesKing) && (turn == 2 || maptoarrays[pieceX][pieceY] == king))
         )) {
             //changing board
@@ -149,7 +148,7 @@ public class mouseHandling implements MouseListener {
 
 
             //white+king taking diagonal right
-        } else if (valid == true && maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999
+        } else if (valid&& maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999
                 && (pieceX == newX + 2 && pieceY == newY + 2 && (maptoarrays[newX + 1][newY + 1] == takes || maptoarrays[newX + 1][newY + 1] == takesKing) && (turn == 2 || maptoarrays[pieceX][pieceY] == king))
         ) {
             //changing on board
@@ -172,7 +171,7 @@ public class mouseHandling implements MouseListener {
             }
             turnAdding++;
             //grey+king taking left
-        } else if (valid == true && maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999
+        } else if (valid && maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999
                 && (pieceX == newX + 2 && pieceY == newY - 2 && (maptoarrays[newX + 1][newY - 1] == takes || maptoarrays[newX + 1][newY - 1] == takesKing) && (turn == 3 || maptoarrays[pieceX][pieceY] == king))) {
             //check if king and keep the king
             if (maptoarrays[pieceX][pieceY] == king) {
@@ -192,7 +191,7 @@ public class mouseHandling implements MouseListener {
             }
             turnAdding++;
             //grey+king taking right
-        } else if (valid == true && maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999
+        } else if (valid && maptoarrays[Input.posX - 1][Input.posY - 1] == 0 && Input.posX != 999999999
                 && (pieceX == newX - 2 && pieceY == newY - 2 && (maptoarrays[newX - 1][newY - 1] == takes || (turn == 3 || maptoarrays[newX - 1][newY - 1] == takesKing) && maptoarrays[pieceX][pieceY] == king))) {
             if (maptoarrays[pieceX][pieceY] == king) {
                 //check if king
