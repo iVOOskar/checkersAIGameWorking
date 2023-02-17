@@ -3,52 +3,52 @@ package com.example.checkersaigame;
 import java.util.Arrays;
 
 public class mergeSort {
-    public static void merge(int a[], int beg, int mid, int end) {
+    public static void merge(int merge[], int beg, int mid, int end) {
         int i, j, k;
-        int n1 = mid - beg + 1;
-        int n2 = end - mid;
+        int temp1 = mid - beg + 1;
+        int temp2 = end - mid;
 
-        int LeftArray[] = new int[n1];
-        int RightArray[] = new int[n2]; //temporary arrays
+        int LeftArray[] = new int[temp1];
+        int RightArray[] = new int[temp2]; //temporary arrays
 
-        /* copy data to temp arrays */
-        for (i = 0; i < n1; i++)
-            LeftArray[i] = a[beg + i];
-        for (j = 0; j < n2; j++)
-            RightArray[j] = a[mid + 1 + j];
+        //copy data to temp arrays
+        for (i = 0; i < temp1; i++)
+            LeftArray[i] = merge[beg + i];
+        for (j = 0; j < temp2; j++)
+            RightArray[j] = merge[mid + 1 + j];
 
         i = 0;
-        /* initial index of first sub-array */
+        // initial index of first sub-array
         j = 0;
-        /* initial index of second sub-array */
+        // initial index of second sub-array
         k = beg;
-        /* initial index of merged sub-array */
+        // initial index of merged sub-array
 
-        while (i < n1 && j < n2) {
+        while (i < temp1 && j < temp2) {
             if (LeftArray[i] <= RightArray[j]) {
-                a[k] = LeftArray[i];
+                merge[k] = LeftArray[i];
                 i++;
             } else {
-                a[k] = RightArray[j];
+                merge[k] = RightArray[j];
                 j++;
             }
             k++;
         }
-        while (i < n1) {
-            a[k] = LeftArray[i];
+        while (i < temp1) {
+            merge[k] = LeftArray[i];
             i++;
             k++;
         }
 
-        while (j < n2) {
-            a[k] = RightArray[j];
+        while (j < temp2) {
+            merge[k] = RightArray[j];
             j++;
             k++;
         }
         System.out.println("The scores are:");
-        int pos = a.length;
-        for (int l = 0; l < a.length; l++) {
-            System.out.println(pos+": userID-"+starterMenuController.UserId.get(l)+" with "+a[l]);
+        int pos = merge.length;
+        for (int l = 0; l < merge.length; l++) {
+            System.out.println(pos+": userID-"+starterMenuController.UserId.get(l)+" with "+ merge[l]);
             pos--;
         }
     }
