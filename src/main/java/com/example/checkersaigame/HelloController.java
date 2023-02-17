@@ -16,6 +16,7 @@ public class HelloController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
+    public static int userNum=0;
     @FXML
     private Label lblStatus;
 
@@ -30,7 +31,7 @@ public class HelloController {
     @FXML
    public void pressButtonLogin(ActionEvent event){
 
-        for (int i = 0; i < database.Users.size(); i++) {
+        for (int i = 0; i < database.Users.size(); i++, userNum = i) {
             //check what is typed with database
             if (txtUserName.getText().equals(database.Users.get(i)) && txtPassWord.getText().hashCode() == (database.Passwords.get(i))) {
                 lblStatus.setText("Login Success");
@@ -45,6 +46,7 @@ public class HelloController {
 
                 gb.StartThread();
                 break;
+
             }
             //if failed
             lblStatus.setText("Login Failed");

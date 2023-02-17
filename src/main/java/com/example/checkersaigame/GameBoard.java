@@ -16,6 +16,7 @@ public class GameBoard extends JPanel implements Runnable {
     public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
+    public static String winner;
     Thread gameThread;
 
 
@@ -73,13 +74,16 @@ public class GameBoard extends JPanel implements Runnable {
                 mH.mapToArray();
                 mouseHandling.greyTakes =0;
                 //check is winners
+                winner = "grey";
+                leaderboard.saveLeader();
             }else if(mouseHandling.whiteTakes==12){
                 System.out.println("white wins");
                 //reset board
                 mouseHandling mH = new mouseHandling();
                 mH.mapToArray();
                 mouseHandling.whiteTakes=0;
-
+                winner = "White";
+                leaderboard.saveLeader();
             }
         }
     }

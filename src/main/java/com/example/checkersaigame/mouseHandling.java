@@ -255,7 +255,8 @@ public class mouseHandling implements MouseListener {
             }
 
             sr.close();
-            System.out.println(Arrays.deepToString(maptoarrays));
+            //test
+            //System.out.println(Arrays.deepToString(maptoarrays));
 
         } catch (Exception e) {
             System.out.println(e);
