@@ -93,8 +93,7 @@ public class starterMenuController {
                 ScoresArray[i]=Scores.get(i);
             }
 
-            mergeSort.merge(ScoresArray,1,(ScoresArray.length-1)/2,ScoresArray.length-1);
-
+            mergeSort.merge(ScoresArray);
 
         } catch (Exception e) {
             System.out.println(e);

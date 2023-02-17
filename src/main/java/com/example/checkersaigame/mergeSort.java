@@ -1,55 +1,56 @@
 package com.example.checkersaigame;
 
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class mergeSort {
-    public static void merge(int merge[], int beg, int mid, int end) {
-        int i, j, k;
-        int temp1 = mid - beg + 1;
-        int temp2 = end - mid;
+    public static ArrayList<Integer> ScoresOrdered = new ArrayList<>();
+    /**
+     * A Java method to implement MergeSort algorithm using recursion
+     *
+     * @param input
+     *          , integer array to be sorted
+     * @param start
+     *          index of first element in array
+     * @param end
+     *          index of last element in array
+     *
+     */
 
-        int LeftArray[] = new int[temp1];
-        int RightArray[] = new int[temp2]; //temporary arrays
+    public static void merge (int[] input){
+        mergesort(input,0,input.length-1);
+        System.out.println("the scores are:");
+        for (int i = 0; i < input.length-1; i++) {
+            System.out.println(i+1+": "+input[i+1]);
+        }
+    }
 
-        //copy data to temp arrays
-        for (i = 0; i < temp1; i++)
-            LeftArray[i] = merge[beg + i];
-        for (j = 0; j < temp2; j++)
-            RightArray[j] = merge[mid + 1 + j];
+    public static void mergesort(int[] input, int start, int end) {
 
+        // break problem into smaller structurally identical problems
+        int mid = (start + end) / 2;
+        if (start < end) {
+            mergesort(input, start, mid);
+            mergesort(input, mid + 1, end);
+        }
+
+        // merge solved pieces to get solution to original problem
+        int i = 0, first = start, last = mid + 1;
+        int[] tmp = new int[end - start + 1];
+
+        while (first <= mid && last <= end) {
+            tmp[i++] = input[first] < input[last] ? input[first++] : input[last++];
+        }
+        while (first <= mid) {
+            tmp[i++] = input[first++];
+        }
+        while (last <= end) {
+            tmp[i++] = input[last++];
+        }
         i = 0;
-        // initial index of first sub-array
-        j = 0;
-        // initial index of second sub-array
-        k = beg;
-        // initial index of merged sub-array
-
-        while (i < temp1 && j < temp2) {
-            if (LeftArray[i] <= RightArray[j]) {
-                merge[k] = LeftArray[i];
-                i++;
-            } else {
-                merge[k] = RightArray[j];
-                j++;
-            }
-            k++;
-        }
-        while (i < temp1) {
-            merge[k] = LeftArray[i];
-            i++;
-            k++;
-        }
-
-        while (j < temp2) {
-            merge[k] = RightArray[j];
-            j++;
-            k++;
-        }
-        System.out.println("The scores are:");
-        int pos = merge.length;
-        for (int l = 0; l < merge.length; l++) {
-            System.out.println(pos+": userID-"+starterMenuController.UserId.get(l)+" with "+ merge[l]);
-            pos--;
+        while (start <= end) {
+            input[start++] = tmp[i++];
         }
     }
 }
