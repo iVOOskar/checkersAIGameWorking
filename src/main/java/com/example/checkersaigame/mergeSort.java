@@ -7,15 +7,12 @@ import java.util.Arrays;
 public class mergeSort {
     public static ArrayList<Integer> ScoresOrdered = new ArrayList<>();
     /**
-     * A Java method to implement MergeSort algorithm using recursion
-     *
      * @param input
      *          , integer array to be sorted
      * @param start
      *          index of first element in array
      * @param end
      *          index of last element in array
-     *
      */
 
     public static void merge (int[] input){
