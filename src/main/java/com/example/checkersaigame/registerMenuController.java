@@ -38,7 +38,14 @@ public class registerMenuController {
             //check if empty fields
             if(Username.equals("")||Password == 0){
                 ReglblStatus.setText("Fill the Fields");
-            }else {
+            }else if(RegPassWord.getText().length()<5) {
+                System.out.println("enter a longer password");
+            }else if (RegPassWord.getText().length()>40){
+                System.out.println("password too long");
+            }else if (Username.length()>40){
+                System.out.println("username too long");
+            }
+            else {
                 //get connection
                 String DataLoc = System.getProperty("user.dir") + "\\src//main//resources//databases//NEADatabase.accdb";
 
